@@ -1,9 +1,12 @@
 class DynamicArray {
+    int[] arr;
+    int capacity;
+    int size;
 
     public DynamicArray(int capacity) {
         this.arr = new int[capacity];
-        int this.capacity = capacity;
-        int this.size = 0;
+        this.capacity = capacity;
+        this.size = 0;
     }
 
     public int get(int i) {
@@ -15,17 +18,21 @@ class DynamicArray {
     }
 
     public void pushback(int n) {
+        if (this.size==this.capacity){
+            resize();
+        }
         this.arr[this.size] = n;
         this.size+=1;
     }
 
     public int popback() {
-
+        this.size -= 1;
+        return this.arr[this.size];
     }
 
     private void resize() {
         this.capacity *= 2;
-        newArr = new int[this.capacity]
+        int[] newArr = new int[this.capacity];
         for (int i = 0; i < this.size; i++) {
             newArr[i] = this.arr[i];
         }
@@ -37,6 +44,6 @@ class DynamicArray {
     }
 
     public int getCapacity() {
-        return this.capacity
+        return this.capacity;
     }
 }
